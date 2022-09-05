@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/bloc/app_blocs.dart';
+import 'package:flutter_application_2/bloc/app_events.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -65,7 +68,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _postData(context) {}
+  void _postData(context) {
+    BlocProvider.of<ProductBloc>(context).add(
+      Create(_nameController.text, _priceController.text),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
